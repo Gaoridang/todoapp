@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Todo } from '../store/types';
 import styled from 'styled-components';
 import { Div } from './TodoList';
@@ -47,44 +46,18 @@ interface Props {
   todos: Todo[];
 }
 
-const TodoItem = () => {
-  const todosTest: Todo[] = [
-    {
-      title: 'a',
-      id: 1,
-      done: false,
-    },
-    {
-      title: 'b',
-      id: 2,
-      done: false,
-    },
-    {
-      title: 'c',
-      id: 3,
-      done: false,
-    },
-    {
-      title: 'd',
-      id: 4,
-      done: false,
-    },
-    {
-      title: 'e',
-      id: 5,
-      done: false,
-    },
-  ];
-
+const TodoItem = ({ todos }: Props) => {
   return (
     <>
       <LineWrapper>
-        {todosTest.map((todo) => (
-          <Div key={todo.id}>
-            <SubTitle>{todo.title}</SubTitle>
-            <Line />
-          </Div>
-        ))}
+        {todos.length > 0
+          ? todos.map((todo) => (
+              <Div key={todo.id}>
+                <SubTitle>{todo.title}</SubTitle>
+                <Line />
+              </Div>
+            ))
+          : 'No items'}
       </LineWrapper>
     </>
   );
