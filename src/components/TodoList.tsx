@@ -8,6 +8,7 @@ import { addTodo, deleteTodo } from '../store/actions';
 
 // Component Styling
 export const Div = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
