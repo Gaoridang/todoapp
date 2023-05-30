@@ -2,7 +2,7 @@ import { Action } from 'redux';
 
 export interface Todo {
   title: string;
-  id: number;
+  id: string;
   done: boolean;
 }
 
@@ -20,7 +20,7 @@ export type AddTodoAction = Action<typeof ADD_TODO> & {
 };
 
 export type DeleteTodoAction = Action<typeof DELETE_TODO> & {
-  id: number;
+  id: string;
 };
 
 // actions

@@ -42,7 +42,7 @@ const TodoList = () => {
   };
 
   const onDelete = useCallback(
-    (id: number) => {
+    (id: string) => {
       dispatch(deleteTodo(id));
     },
     [dispatch]

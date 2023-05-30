@@ -1,17 +1,16 @@
 import { ADD_TODO, DELETE_TODO } from './types';
-
-let nextId = 1;
+import { nanoid } from 'nanoid';
 
 export const addTodo = (title: string) => ({
   type: ADD_TODO,
   payload: {
     title: title,
-    id: nextId++,
+    id: nanoid(),
     done: false,
   },
 });
 
-export const deleteTodo = (id: number) => ({
+export const deleteTodo = (id: string) => ({
   type: DELETE_TODO,
   id,
 });

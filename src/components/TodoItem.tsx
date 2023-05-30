@@ -44,7 +44,7 @@ const SubTitle = styled(Title)`
 
 interface Props {
   todos: Todo[];
-  onDelete: (id: number) => void;
+  onDelete: (id: string) => void;
 }
 
 const TodoItem = ({ todos, onDelete }: Props) => {
