@@ -44,15 +44,16 @@ const SubTitle = styled(Title)`
 
 interface Props {
   todos: Todo[];
+  onDelete: (id: number) => void;
 }
 
-const TodoItem = ({ todos }: Props) => {
+const TodoItem = ({ todos, onDelete }: Props) => {
   return (
     <>
       <LineWrapper>
         {todos.length > 0
           ? todos.map((todo) => (
-              <Div key={todo.id}>
+              <Div key={todo.id} onClick={() => onDelete(todo.id)}>
                 <SubTitle>{todo.title}</SubTitle>
                 <Line />
               </Div>

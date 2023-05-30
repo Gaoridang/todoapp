@@ -1,4 +1,4 @@
-import { ADD_TODO } from './types';
+import { ADD_TODO, DELETE_TODO } from './types';
 
 let nextId = 1;
 
@@ -9,4 +9,9 @@ export const addTodo = (title: string) => ({
     id: nextId++,
     done: false,
   },
+});
+
+export const deleteTodo = (id: number) => ({
+  type: DELETE_TODO,
+  id,
 });

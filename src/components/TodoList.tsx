@@ -1,10 +1,10 @@
-import { ChangeEvent, FormEvent, useCallback, useState } from 'react';
+import { FormEvent, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import { Title } from './TodoItem';
 import TodoItem from './TodoItem';
 import { AppState, Todo } from '../store/types';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo } from '../store/actions';
+import { addTodo, deleteTodo } from '../store/actions';
 
 // Component Styling
 export const Div = styled.div`
@@ -36,21 +36,28 @@ const TodoList = () => {
     [dispatch, title]
   );
 
-  const onAddTodo = (e: ChangeEvent<HTMLInputElement>) => {
+  const onAdd = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setTitle(e.target.value);
   };
+
+  const onDelete = useCallback(
+    (id: number) => {
+      dispatch(deleteTodo(id));
+    },
+    [dispatch]
+  );
 
   return (
     <>
       <Div>
         <Title style={{ marginTop: '50px' }}>BUCKET LIST APP</Title>
         <form onSubmit={onSubmit}>
-          <Input type="text" value={title} onChange={onAddTodo} placeholder="월 천 만원 벌기" />
+          <Input type="text" value={title} onChange={onAdd} placeholder="월 천 만원 벌기" />
           <button type="submit">추가하기</button>
         </form>
       </Div>
-      <TodoItem todos={todos} />
+      <TodoItem todos={todos} onDelete={onDelete} />
     </>
   );
 };

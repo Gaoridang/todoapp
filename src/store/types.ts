@@ -12,11 +12,16 @@ export type AppState = {
 
 // action types
 export const ADD_TODO = 'todos/ADD_TODO';
+export const DELETE_TODO = 'todos/DELETE_TODO';
 
 export type AddTodoAction = Action<typeof ADD_TODO> & {
   type: string;
   payload: Todo;
 };
 
+export type DeleteTodoAction = Action<typeof DELETE_TODO> & {
+  id: number;
+};
+
 // actions
-export type Actions = AddTodoAction;
+export type Actions = AddTodoAction | DeleteTodoAction;
