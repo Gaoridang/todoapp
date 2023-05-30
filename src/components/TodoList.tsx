@@ -1,11 +1,11 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { Todo } from '../store/types';
+import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import { Title } from './TodoItem';
 import TodoItem from './TodoItem';
+import { Todo } from '../store/types';
 
 // Component Styling
-const Div = styled.div`
+export const Div = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +19,7 @@ const Input = styled.input`
 
 // Main Component
 const TodoList = () => {
-  const [todos, setTodos] = useState<Todo[] | undefined>([]);
+  const [todos, setTodos] = useState<Todo[] | null>([]);
   const [title, setTitle] = useState('');
 
   const onAddTodo = (e: ChangeEvent<HTMLInputElement>) => {

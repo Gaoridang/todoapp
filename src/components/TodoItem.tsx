@@ -1,4 +1,7 @@
+import { useState } from 'react';
+import { Todo } from '../store/types';
 import styled from 'styled-components';
+import { Div } from './TodoList';
 
 const LineWrapper = styled.div`
   display: flex;
@@ -13,6 +16,7 @@ const Line = styled.div`
   position: relative;
   height: 1px;
   width: 80vw;
+  margin-top: 30px;
   background-color: black;
   opacity: 0.2;
   &::after {
@@ -39,24 +43,51 @@ const SubTitle = styled(Title)`
   font-weight: ${(props) => props.theme.weightRegular};
 `;
 
-const Todo = () => {
+interface Props {
+  todos: Todo[];
+}
+
+const TodoItem = () => {
+  const todosTest: Todo[] = [
+    {
+      title: 'a',
+      id: 1,
+      done: false,
+    },
+    {
+      title: 'b',
+      id: 2,
+      done: false,
+    },
+    {
+      title: 'c',
+      id: 3,
+      done: false,
+    },
+    {
+      title: 'd',
+      id: 4,
+      done: false,
+    },
+    {
+      title: 'e',
+      id: 5,
+      done: false,
+    },
+  ];
+
   return (
     <>
       <LineWrapper>
-        <Line />
-        <SubTitle>테슬라 200주</SubTitle>
-        <Line />
-        <SubTitle>한강변 아파트</SubTitle>
-        <Line />
-        <SubTitle>월 방문자 1000명 이상 웹앱 제작</SubTitle>
-        <Line />
-        <SubTitle>독서 모임 모집</SubTitle>
-        <Line />
-        <SubTitle>월 1회 국내 여행 & 분기 1회 해외 여행</SubTitle>
-        <Line />
+        {todosTest.map((todo) => (
+          <Div key={todo.id}>
+            <SubTitle>{todo.title}</SubTitle>
+            <Line />
+          </Div>
+        ))}
       </LineWrapper>
     </>
   );
 };
 
-export default Todo;
+export default TodoItem;
