@@ -30,9 +30,11 @@ const TodoList = () => {
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      dispatch(addTodo(title));
-      console.log(title, 'Dispatch completed');
-      setTitle('');
+      if (title) {
+        dispatch(addTodo(title));
+        console.log(title, 'Dispatch completed');
+        setTitle('');
+      }
     },
     [dispatch, title]
   );
