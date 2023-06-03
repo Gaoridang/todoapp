@@ -22,8 +22,8 @@ const Card = styled.div`
   height: 400px;
   border: 1px solid #e7e7e7;
   border-radius: 15px;
-  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.05);
-  background-color: #fff;
+  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.1);
+  background-color: #8690d9;
 `;
 
 // const Line = styled.div`
@@ -49,9 +49,10 @@ const SubTitle = styled.h2`
   position: relative;
   padding: 1rem 2rem;
   font-size: 18px;
+  color: white;
   cursor: pointer;
   font-family: ${(props) => props.theme.fontTitle};
-  font-weight: ${(props) => props.theme.weightRegular};
+  font-weight: ${(props) => props.theme.weightMedium};
 
   &:before {
     position: absolute;
@@ -63,6 +64,10 @@ const SubTitle = styled.h2`
     width: 65%;
     background-color: black;
   }
+
+  &:hover:before {
+    background-color: red;
+  }
 `;
 
 const CloseBtn = styled.button`
@@ -70,13 +75,14 @@ const CloseBtn = styled.button`
   top: 12px;
   right: 12px;
   border: none;
+  color: white;
   padding: 5px 5px;
   border-radius: 10px;
   transition: all 0.2s ease;
   background-color: transparent;
 
   &:hover {
-    background-color: #d5d5d5;
+    background-color: #646db3;
   }
   &:active {
     transform: scale(0.95);
@@ -101,7 +107,7 @@ const TodoItem = ({ todos, onDelete }: Props) => {
                 </CloseBtn>
               </Card>
             ))
-          : 'No items'}
+          : 'Record Your Life'}
       </LineWrapper>
     </>
   );

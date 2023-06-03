@@ -9,7 +9,8 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    font-family: 'Gothic A1', sans-serif;
+    font-family: Noto Sans KR, sans-serif;
+    color: white;
   }
 `;
 

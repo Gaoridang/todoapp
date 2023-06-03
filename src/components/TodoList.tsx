@@ -18,6 +18,7 @@ export const Div = styled.div`
 
 export const Title = styled.h1`
   font-size: 30px;
+  color: #8690d9;
   font-family: ${(props) => props.theme.fontLogo};
   font-weight: ${(props) => props.theme.weightBold};
 `;
@@ -63,7 +64,7 @@ const TodoList = () => {
 
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Bucket List App', 'Bring your bucket list to life.'],
+      strings: ['Bucket List App', `Bring Your Bucket List to Life.`],
       typeSpeed: 100,
       backSpeed: 50,
       loop: true,
