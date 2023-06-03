@@ -9,6 +9,8 @@ import { theme } from './styles/theme';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './store';
+import { RouterProvider } from 'react-router-dom';
+import router from './routes/router';
 
 const store = configureStore({ reducer: rootReducer });
 
@@ -18,7 +20,7 @@ root.render(
     <GlobalStyle />
     <ThemeProvider theme={{ ...theme }}>
       <Provider store={store}>
-        <App />
+        <RouterProvider router={router} />
       </Provider>
     </ThemeProvider>
   </React.StrictMode>

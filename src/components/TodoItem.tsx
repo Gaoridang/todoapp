@@ -1,7 +1,9 @@
 import { Todo } from '../store/types';
 import styled from 'styled-components';
-import { Div } from './TodoList';
+import { Close } from '@styled-icons/ionicons-solid';
+import { IoIosClose } from 'react-icons/io';
 
+// styled components
 const LineWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,25 +13,38 @@ const LineWrapper = styled.div`
   padding: 40px;
 `;
 
-const Line = styled.div`
+const Card = styled.div`
   position: relative;
-  height: 1px;
-  width: 80vw;
-  margin: 16px;
-  background-color: black;
-  opacity: 0.2;
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: black;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 400px;
+  border: 1px solid #e7e7e7;
+  border-radius: 15px;
+  box-shadow: 3px 3px 0 0 rgba(0, 0, 0, 0.05);
+  background-color: #fff;
 `;
+
+// const Line = styled.div`
+//   position: relative;
+//   height: 1px;
+//   width: 80vw;
+//   background-color: black;
+//   opacity: 0.2;
+//   &::after {
+//     content: '';
+//     position: absolute;
+//     right: 0;
+//     top: 50%;
+//     transform: translateY(-50%);
+//     width: 4px;
+//     height: 4px;
+//     border-radius: 50%;
+//     background-color: black;
+//   }
+// `;
 
 export const Title = styled.h1`
   font-size: 30px;
@@ -38,17 +53,34 @@ export const Title = styled.h1`
 `;
 
 const SubTitle = styled(Title)`
+  position: relative;
+  padding: 1rem 2rem;
   font-size: 18px;
+  cursor: pointer;
   font-weight: ${(props) => props.theme.weightRegular};
+
+  &:before {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    content: '';
+    height: 2px;
+    width: 65%;
+    background-color: black;
+  }
 `;
 
-const Btn = styled.button`
+const CloseBtn = styled.button`
   position: absolute;
-  top: -6px;
-  right: 20px;
+  top: 12px;
+  right: 12px;
   border: none;
-  padding: 10px 15px;
+  padding: 5px 5px;
   border-radius: 10px;
+  transition: all 0.2s ease;
+  background-color: transparent;
+
   &:hover {
     background-color: #d5d5d5;
   }
@@ -68,11 +100,12 @@ const TodoItem = ({ todos, onDelete }: Props) => {
       <LineWrapper>
         {todos.length > 0
           ? todos.map((todo) => (
-              <Div key={todo.id}>
+              <Card key={todo.id}>
                 <SubTitle>{todo.title}</SubTitle>
-                <Btn onClick={() => onDelete(todo.id)}>Delete</Btn>
-                <Line />
-              </Div>
+                <CloseBtn onClick={() => onDelete(todo.id)}>
+                  <Close size={20} />
+                </CloseBtn>
+              </Card>
             ))
           : 'No items'}
       </LineWrapper>
