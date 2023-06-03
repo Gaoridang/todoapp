@@ -1,10 +1,11 @@
 import { FormEvent, useCallback, useState } from 'react';
 import styled from 'styled-components';
-import { Title } from './TodoItem';
 import TodoItem from './TodoItem';
 import { AppState, Todo } from '../store/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo, deleteTodo } from '../store/actions';
+import Typed from 'typed.js';
+import React from 'react';
 
 // Component Styling
 export const Div = styled.div`
@@ -13,6 +14,12 @@ export const Div = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+export const Title = styled.h1`
+  font-size: 30px;
+  font-family: ${(props) => props.theme.fontLogo};
+  font-weight: ${(props) => props.theme.weightBold};
 `;
 
 const Input = styled.input`
@@ -51,10 +58,30 @@ const TodoList = () => {
     [dispatch]
   );
 
+  // Create reference to store the DOM element containing the animation
+  const el = React.useRef(null);
+
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['Bucket List App', 'Bring your bucket list to life.'],
+      typeSpeed: 100,
+      backSpeed: 50,
+      loop: true,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
+
   return (
     <>
       <Div>
-        <Title style={{ marginTop: '50px' }}>BUCKET LIST APP</Title>
+        <Title style={{ marginTop: '50px' }}>
+          <span ref={el} />
+        </Title>
+
         <form onSubmit={onSubmit}>
           <Input type="text" value={title} onChange={onAdd} placeholder="월 천 만원 벌기" />
           <button type="submit">추가하기</button>

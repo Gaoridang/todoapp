@@ -1,7 +1,6 @@
 import { Todo } from '../store/types';
 import styled from 'styled-components';
 import { Close } from '@styled-icons/ionicons-solid';
-import { IoIosClose } from 'react-icons/io';
 
 // styled components
 const LineWrapper = styled.div`
@@ -46,17 +45,12 @@ const Card = styled.div`
 //   }
 // `;
 
-export const Title = styled.h1`
-  font-size: 30px;
-  font-family: ${(props) => props.theme.fontLogo};
-  font-weight: ${(props) => props.theme.weightBold};
-`;
-
-const SubTitle = styled(Title)`
+const SubTitle = styled.h2`
   position: relative;
   padding: 1rem 2rem;
   font-size: 18px;
   cursor: pointer;
+  font-family: ${(props) => props.theme.fontTitle};
   font-weight: ${(props) => props.theme.weightRegular};
 
   &:before {
